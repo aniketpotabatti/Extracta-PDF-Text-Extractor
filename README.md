@@ -6,21 +6,21 @@
 **Created:** July 2024
 ---
 
-## ✨ Features
+## Features
 
 | Feature | Description |
 |---|---|
-| 📂 Drag & Drop Upload | Drop a PDF or click to browse — up to 50 MB |
-| 📄 Page-by-Page Extraction | View extracted text per page in a collapsible accordion |
-| 📑 PDF Metadata | See title, author, creator, producer, page count, and file size |
-| 📋 Copy to Clipboard | Copy all extracted text with one click |
-| 💾 Download as .txt | Save extracted text as a plain text file |
-| 🌗 Dark Mode UI | Glassmorphism design with ambient gradient animations |
-| 📱 Responsive | Works on desktop and mobile |
+| Drag & Drop Upload | Drop a PDF or click to browse — up to 50 MB |
+| Page-by-Page Extraction | View extracted text per page in a collapsible accordion |
+| PDF Metadata | See title, author, creator, producer, page count, and file size |
+| Copy to Clipboard | Copy all extracted text with one click |
+| Download as .txt | Save extracted text as a plain text file |
+| Dark Mode UI | Glassmorphism design with ambient gradient animations |
+| Responsive | Works on desktop and mobile |
 
 ---
 
-## 🖥️ Tech Stack
+## Tech Stack
 
 | Layer | Technology |
 |---|---|
@@ -34,7 +34,7 @@
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 extracta/
@@ -76,7 +76,7 @@ extracta/
 
 ---
 
-## 🚀 Getting Started
+## Getting Started
 
 ### Prerequisites
 
@@ -184,7 +184,7 @@ Content-Type: multipart/form-data
 
 ---
 
-## 📜 NPM Scripts
+## NPM Scripts
 
 | Script | Command | Description |
 |---|---|---|
@@ -195,7 +195,7 @@ Content-Type: multipart/form-data
 
 ---
 
-## ⚙️ Configuration
+## Configuration
 
 | Setting | Default | Description |
 |---|---|---|
@@ -210,7 +210,7 @@ PORT=8080 npm run dev
 
 ---
 
-## 🔒 Error Codes
+## Error Codes
 
 | Code | HTTP Status | Meaning |
 |---|---|---|
@@ -222,7 +222,7 @@ PORT=8080 npm run dev
 
 ---
 
-## 🗒️ Notes
+## Notes
 
 - Uploaded PDF files are **automatically deleted** from the server after text extraction — nothing is stored.
 - Image-based PDFs (scanned documents) without embedded text will return empty pages. OCR is not currently supported.
@@ -230,6 +230,6 @@ PORT=8080 npm run dev
 
 ---
 
-## 📄 License
+## License
 
 MIT © Extracta
