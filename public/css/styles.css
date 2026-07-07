@@ -1,0 +1,12 @@
+﻿/* ===================================================================
+   Extracta — Design System Entry Point
+   Import order matters: base first, then components, then utilities.
+   =================================================================== */
+
+@import './base.css';
+@import './layout.css';
+@import './upload.css';
+@import './progress.css';
+@import './results.css';
+@import './accordion.css';
+@import './utilities.css';

@@ -1,0 +1,50 @@
+﻿/* Extracta — Utilities: Responsive, Focus Visible & Selection */
+
+/* â”€â”€ 18. Responsive â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+@media (max-width: 600px) {
+  .main {
+    padding: var(--space-xl) var(--space-md);
+    gap: var(--space-lg);
+  }
+
+  .hero-title {
+    font-size: 1.75rem;
+  }
+
+  .card-header {
+    padding: var(--space-md);
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .view-toggle { padding: var(--space-md); }
+  .pages-accordion { padding: var(--space-sm); }
+  .full-text-area { padding: var(--space-md); }
+
+  .dropzone {
+    padding: var(--space-xl) var(--space-md);
+    min-height: 160px;
+  }
+
+  .card-actions {
+    flex-wrap: wrap;
+    gap: var(--space-xs);
+  }
+
+  .meta-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* â”€â”€ 19. Focus visible (Accessibility) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+:focus-visible {
+  outline: 2px solid var(--clr-primary-light);
+  outline-offset: 3px;
+  border-radius: var(--radius-sm);
+}
+
+/* â”€â”€ 20. Selection color â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+::selection {
+  background: rgba(124, 58, 237, 0.35);
+  color: white;
+}

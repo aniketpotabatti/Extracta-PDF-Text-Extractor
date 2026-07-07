@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Extracta — PDF Text Extractor</title>
+  <meta name="description"
+    content="Extracta is a fast, minimal PDF text extractor. Upload any PDF and instantly extract clean, formatted text page by page." />
+  <meta name="keywords" content="PDF extractor, PDF to text, extract text from PDF, PDF parser" />
+  <meta property="og:title" content="Extracta — PDF Text Extractor" />
+  <meta property="og:description" content="Extract clean text from any PDF instantly." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="/css/styles.css" />
+</head>
+
+<body>
+
+  <!-- Background ambient blobs -->
+  <div class="bg-blob bg-blob-1" aria-hidden="true"></div>
+  <div class="bg-blob bg-blob-2" aria-hidden="true"></div>
+
+  <!-- ===== HEADER ===== -->
+  <header class="header">
+    <div class="header-inner">
+      <div class="logo" aria-label="Extracta">
+        <span class="logo-icon" aria-hidden="true">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="4" y="2" width="15" height="20" rx="2" fill="url(#logoGrad)" opacity="0.9" />
+            <rect x="9" y="6" width="20" height="20" rx="2" fill="url(#logoGrad2)" />
+            <path d="M13 12h8M13 16h6M13 20h4" stroke="white" stroke-width="1.5" stroke-linecap="round" />
+            <path d="M9 9l3-3 3 3" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+            <defs>
+              <linearGradient id="logoGrad" x1="4" y1="2" x2="19" y2="22" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#7c3aed" />
+                <stop offset="1" stop-color="#4f46e5" />
+              </linearGradient>
+              <linearGradient id="logoGrad2" x1="9" y1="6" x2="29" y2="26" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#6366f1" />
+                <stop offset="1" stop-color="#8b5cf6" />
+              </linearGradient>
+            </defs>
+          </svg>
+        </span>
+        <span class="logo-text">Extracta</span>
+      </div>
+      <div class="header-badge">
+        <span class="badge-dot" aria-hidden="true"></span>
+        <span>v1.0.0</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== MAIN ===== -->
+  <main class="main">
+
+    <!-- Hero section -->
+    <section class="hero" aria-labelledby="hero-title">
+      <h1 class="hero-title" id="hero-title">
+        Extract Text from<br />
+        <span class="gradient-text">Any PDF Instantly</span>
+      </h1>
+      <p class="hero-subtitle">
+        Upload a PDF and get clean, structured text — page by page — in seconds.
+      </p>
+    </section>
+
+    <!-- Upload section -->
+    <section class="upload-section" aria-label="Upload PDF">
+      <div class="dropzone" id="dropzone" role="button" tabindex="0" aria-label="Drop a PDF here or click to browse"
+        aria-describedby="dropzone-hint">
+        <div class="dropzone-inner">
+          <div class="dropzone-icon" aria-hidden="true">
+            <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M24 8L24 32" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" />
+              <path d="M14 18L24 8L34 18" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                stroke-linejoin="round" />
+              <path d="M8 34V38C8 39.1 8.9 40 10 40H38C39.1 40 40 39.1 40 38V34" stroke="currentColor"
+                stroke-width="2.5" stroke-linecap="round" />
+            </svg>
+          </div>
+          <p class="dropzone-title">Drop your PDF here</p>
+          <p class="dropzone-sub" id="dropzone-hint">or <span class="link-text">click to browse</span> — max 50 MB</p>
+        </div>
+
+        <!-- File selected state (hidden until file chosen) -->
+        <div class="dropzone-file-info" id="fileInfo" hidden aria-live="polite">
+          <span class="file-icon" aria-hidden="true">📄</span>
+          <div class="file-details">
+            <span class="file-name" id="fileName"></span>
+            <span class="file-size" id="fileSize"></span>
+          </div>
+          <button class="file-clear-btn" id="fileClearBtn" aria-label="Remove selected file" type="button">✕</button>
+        </div>
+
+        <input type="file" id="fileInput" accept=".pdf,application/pdf" hidden aria-hidden="true" />
+      </div>
+
+      <button class="extract-btn" id="extractBtn" disabled aria-label="Extract text from PDF">
+        <span class="btn-text">Extract Text</span>
+        <span class="btn-icon" aria-hidden="true">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+            <path d="M9 3.5V14.5M9 14.5L4.5 10M9 14.5L13.5 10" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </span>
+      </button>
+    </section>
+
+    <!-- Progress bar (hidden until uploading) -->
+    <div class="progress-wrap" id="progressWrap" hidden role="status" aria-live="polite"
+      aria-label="Extraction progress">
+      <div class="progress-bar-track">
+        <div class="progress-bar-fill" id="progressBar"></div>
+      </div>
+      <span class="progress-label" id="progressLabel">Uploading…</span>
+    </div>
+
+    <!-- Results section (hidden until extracted) -->
+    <section class="results-section" id="resultsSection" hidden aria-label="Extraction results">
+
+      <!-- Metadata card -->
+      <div class="card metadata-card" id="metadataCard">
+        <div class="card-header">
+          <h2 class="card-title">
+            <span aria-hidden="true">📑</span> Document Info
+          </h2>
+          <div class="stat-pills" id="statPills" aria-label="Document statistics"></div>
+        </div>
+        <dl class="meta-grid" id="metaGrid" aria-label="PDF metadata"></dl>
+      </div>
+
+      <!-- Text output card -->
+      <div class="card text-card">
+        <div class="card-header">
+          <h2 class="card-title">
+            <span aria-hidden="true">✦</span> Extracted Text
+          </h2>
+          <div class="card-actions">
+            <button class="action-btn" id="copyBtn" aria-label="Copy all text to clipboard" type="button">
+              <span aria-hidden="true">⎘</span> Copy All
+            </button>
+            <button class="action-btn" id="downloadBtn" aria-label="Download extracted text as .txt file" type="button">
+              <span aria-hidden="true">↓</span> Download .txt
+            </button>
+          </div>
+        </div>
+
+        <!-- View toggle -->
+        <div class="view-toggle">
+          <button class="toggle-btn active" id="viewByPage" role="tab" aria-selected="true" type="button">By
+            Page</button>
+          <button class="toggle-btn" id="viewFull" role="tab" aria-selected="false" type="button">Full Text</button>
+        </div>
+
+        <!-- By-page view -->
+        <div id="pageView" role="tabpanel">
+          <div class="pages-accordion" id="pagesAccordion" aria-label="Pages content"></div>
+        </div>
+
+        <!-- Full text view -->
+        <div id="fullView" hidden role="tabpanel">
+          <textarea class="full-text-area" id="fullTextArea" readonly aria-label="Full extracted text"
+            spellcheck="false"></textarea>
+        </div>
+      </div>
+
+      <!-- Extract another -->
+      <div class="reset-wrap">
+        <button class="reset-btn" id="resetBtn" type="button">
+          ↩ Extract another PDF
+        </button>
+      </div>
+
+    </section>
+
+    <!-- Error message -->
+    <div class="error-toast" id="errorToast" hidden role="alert" aria-live="assertive">
+      <span class="error-icon" aria-hidden="true">⚠</span>
+      <span class="error-msg" id="errorMsg"></span>
+      <button class="error-close" id="errorClose" aria-label="Dismiss error" type="button">✕</button>
+    </div>
+
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <p>Built with <span aria-label="love">♥</span> using Node.js &amp; TypeScript — <strong>Extracta</strong></p>
+  </footer>
+
+  <script type="module" src="/js/app.js"></script>
+</body>
+
+</html>

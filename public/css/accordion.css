@@ -1,0 +1,115 @@
+﻿/* Extracta — Accordion: Page-by-Page Text Accordion */
+
+/* â”€â”€ 12. Pages Accordion â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+.pages-accordion {
+  padding: var(--space-md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  max-height: 600px;
+  overflow-y: auto;
+}
+
+.pages-accordion::-webkit-scrollbar {
+  width: 4px;
+}
+.pages-accordion::-webkit-scrollbar-track {
+  background: transparent;
+}
+.pages-accordion::-webkit-scrollbar-thumb {
+  background: rgba(124, 58, 237, 0.3);
+  border-radius: var(--radius-full);
+}
+
+.page-item {
+  border: 1px solid var(--clr-border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  transition: border-color var(--transition-fast);
+}
+
+.page-item:hover { border-color: var(--clr-border-hover); }
+
+.page-item-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px var(--space-md);
+  cursor: pointer;
+  user-select: none;
+  background: rgba(255,255,255,0.02);
+  transition: background var(--transition-fast);
+}
+
+.page-item-header:hover { background: rgba(255,255,255,0.04); }
+
+.page-item-title {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--clr-text-primary);
+}
+
+.page-num-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: var(--radius-sm);
+  background: rgba(124, 58, 237, 0.2);
+  color: #a78bfa;
+  font-size: 0.72rem;
+  font-weight: 600;
+}
+
+.page-item-meta {
+  font-size: 0.75rem;
+  color: var(--clr-text-muted);
+}
+
+.page-chevron {
+  color: var(--clr-text-muted);
+  font-size: 0.7rem;
+  transition: transform var(--transition-base);
+}
+
+.page-item.open .page-chevron {
+  transform: rotate(90deg);
+}
+
+.page-item-body {
+  display: none;
+  padding: var(--space-md);
+  border-top: 1px solid var(--clr-border);
+  background: rgba(0,0,0,0.15);
+}
+
+.page-item.open .page-item-body {
+  display: block;
+  animation: fadeIn var(--transition-base) both;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.page-text {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  line-height: 1.7;
+  color: var(--clr-text-secondary);
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.page-empty {
+  font-size: 0.82rem;
+  color: var(--clr-text-muted);
+  font-style: italic;
+  text-align: center;
+  padding: var(--space-md);
+}
